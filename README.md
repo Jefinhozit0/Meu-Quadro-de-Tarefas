@@ -8,7 +8,7 @@ Um gerenciador de tarefas full-stack com uma interface moderna de quadro Kanban,
 
 
 
-![Imagem da Aplicação](../task_manager_web/static/imagem.png)
+![Demonstração do Quadro Kanban](assets/demo.png)
 
 ## Funcionalidades
 
@@ -60,7 +60,6 @@ Siga os passos abaixo para executar o projeto em sua máquina local.
     # Para Windows
     python -m venv .venv
     .\.venv\Scripts\activate
-
     # Para macOS/Linux
     python3 -m venv .venv
     source .venv/bin/activate
