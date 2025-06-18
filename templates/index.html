@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task Board - Kanban UI</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <script src="https://cdn.jsdelivr.net/npm/sortablejs@latest/Sortable.min.js" defer></script>
+    <script src="{{ url_for('static', filename='script.js') }}" defer></script>
+</head>
+<body>
+    <div class="container">
+        <header class="main-header">
+            <h1>Meu Quadro de Tarefas</h1>
+            <div class="header-controls">
+                <button id="theme-toggle-btn" class="theme-toggle-btn" title="Alterar tema">🌙</button>
+                <button id="add-task-btn" class="add-task-button">+ Nova Tarefa</button>
+            </div>
+        </header>
+
+        <div class="filters-toolbar">
+            <input type="text" id="search-input" placeholder="🔍 Buscar por título...">
+            <div class="filter-group">
+                <span>Filtrar por Prioridade:</span>
+                <button class="filter-btn active" data-priority="all">Todas</button>
+                <button class="filter-btn" data-priority="high">Alta</button>
+                <button class="filter-btn" data-priority="medium">Média</button>
+                <button class="filter-btn" data-priority="low">Baixa</button>
+            </div>
+        </div>
+
+        <div id="kanban-board" class="kanban-board">
+            <div class="kanban-column" data-status="pending">
+                <h2 class="column-title">📋 Pendente</h2>
+                <div class="task-list" id="pending-tasks"></div>
+            </div>
+            <div class="kanban-column" data-status="inprogress">
+                <h2 class="column-title">⚙️ Em Andamento</h2>
+                <div class="task-list" id="inprogress-tasks"></div>
+            </div>
+            <div class="kanban-column" data-status="completed">
+                <h2 class="column-title">✅ Concluída</h2>
+                <div class="task-list" id="completed-tasks"></div>
+            </div>
+        </div>
+    </div>
+
+    <div id="task-modal" class="modal-overlay">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <h2 id="modal-title">Adicionar Nova Tarefa</h2>
+            <form id="task-form" novalidate>
+                <input type="hidden" id="task-id">
+                <label for="task-title">Título:</label>
+                <input type="text" id="task-title" placeholder="Ex: Desenvolver a nova landing page" required>
+                <label for="task-description">Descrição:</label>
+                <textarea id="task-description" placeholder="Adicione mais detalhes sobre a tarefa..."></textarea>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="task-due-date">Data de Vencimento:</label>
+                        <input type="date" id="task-due-date">
+                    </div>
+                    <div class="form-group">
+                        <label for="task-priority">Prioridade:</label>
+                        <select id="task-priority">
+                            <option value="Baixa">Baixa</option>
+                            <option value="Média" selected>Média</option>
+                            <option value="Alta">Alta</option>
+                        </select>
+                    </div>
+                </div>
+                <button type="submit" id="save-task-btn">Salvar Tarefa</button>
+                <button type="button" id="delete-task-btn" class="delete-button" style="display: none;">Excluir Tarefa</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

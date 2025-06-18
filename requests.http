@@ -1,0 +1,26 @@
+### Obter uma tarefa específica (substitua 1 pelo ID da sua tarefa)
+GET http://127.0.0.1:5000/tasks/1
+
+### Atualizar uma tarefa (substitua 1 pelo ID da sua tarefa)
+PUT http://127.0.0.1:5000/tasks/1
+Content-Type: application/json
+
+{
+    "title": "Configurar ambiente Flask e SQLAlchemy - CONCLUÍDO",
+    "status": "completed"
+}
+
+### Atualizar parcialmente (PATCH) uma tarefa (substitua 1 pelo ID da sua tarefa)
+PATCH http://127.0.0.1:5000/tasks/1
+Content-Type: application/json
+
+{
+    "description": "Agora com a funcionalidade de atualizar e deletar!"
+}
+
+
+### Deletar uma tarefa (substitua 1 pelo ID da sua tarefa)
+DELETE http://127.0.0.1:5000/tasks/1
+
+### Listar todas as tarefas (para verificar depois de deletar)
+GET http://127.0.0.1:5000/tasks
